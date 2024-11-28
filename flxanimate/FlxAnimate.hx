@@ -305,7 +305,7 @@ class FlxAnimate extends FlxSprite
 			if (instance.symbol.colorEffect != null && (!filterin || filterin && filterInstance.instance != instance))
 				colorEffect.concat(instance.symbol.colorEffect.c_Transform);
 
-			var firstFrame:Int = instance.symbol._curFrame;
+			var firstFrame:Int = symbol.forceFrame ? symbol.forcedFrame : instance.symbol._curFrame;
 			switch (instance.symbol.type)
 			{
 				case Button: firstFrame = setButtonFrames(firstFrame);

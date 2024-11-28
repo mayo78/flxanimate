@@ -54,6 +54,11 @@ class FlxSymbol implements IFlxDestroyable
 	 */
 	public var curFrame(get, set):Int;
 
+	// dde stuff for the ohungis
+	public var forceFrame:Bool;
+
+	public var forcedFrame:Int;
+
 	@:allow(flxanimate.animate.FlxAnim)
 	var _curFrame:Int;
 
