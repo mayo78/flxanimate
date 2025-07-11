@@ -107,7 +107,7 @@ class FlxAnimate extends FlxSprite
 	 */
 	public function loadAtlas(Path:String)
 	{
-		if (!Assets.exists('$Path/Animation.json') && haxe.io.Path.extension(Path) != "zip")
+		if (!FlxG.assets.exists('$Path/Animation.json') && haxe.io.Path.extension(Path) != "zip")
 		{
 			FlxG.log.error('Animation file not found in specified path: "$Path", have you written the correct path?');
 			return;
@@ -736,8 +736,8 @@ class FlxAnimate extends FlxSprite
 
 			if (showPivot && _pivot == null)
 			{
-				_pivot = FlxGraphic.fromBitmapData(Assets.getBitmapData("flxanimate/images/pivot.png"), "__pivot").imageFrame.frame;
-				_indicator = FlxGraphic.fromBitmapData(Assets.getBitmapData("flxanimate/images/indicator.png"), "__indicator").imageFrame.frame;
+				_pivot = FlxGraphic.fromBitmapData(FlxG.assets.getBitmapData("flxanimate/images/pivot.png"), "__pivot").imageFrame.frame;
+				_indicator = FlxGraphic.fromBitmapData(FlxG.assets.getBitmapData("flxanimate/images/indicator.png"), "__indicator").imageFrame.frame;
 			}
 		}
 
@@ -785,7 +785,7 @@ class FlxAnimate extends FlxSprite
 		var jsontxt:String = null;
 		if (haxe.io.Path.extension(Path) == "zip")
 		{
-			var thing = Zip.readZip(Assets.getBytes(Path));
+			var thing = Zip.readZip(FlxG.assets.getBytes(Path));
 
 			for (list in Zip.unzip(thing))
 			{
@@ -800,7 +800,7 @@ class FlxAnimate extends FlxSprite
 			FlxAnimateFrames.zip = thing;
 		}
 		else
-			jsontxt = openfl.Assets.getText('$Path/Animation.json');
+			jsontxt = flixel.FlxG.assets.getText('$Path/Animation.json');
 
 		return jsontxt;
 	}
